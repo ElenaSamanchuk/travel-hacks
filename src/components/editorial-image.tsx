@@ -13,7 +13,7 @@ type EditorialImageProps = {
 export function EditorialImage({
   name,
   alt,
-  sizes = "(max-width: 768px) 100vw, 768px",
+  sizes = "(max-width: 1152px) 100vw, 1152px",
   priority = false,
   className,
 }: EditorialImageProps) {

@@ -15,7 +15,7 @@ const spontaneousHacks = travelHacks.filter((h) => h.category === "spontaneous")
 export function TravelHacksPage() {
   return (
     <div className="min-h-screen bg-[#f7f4ef] text-foreground editorial-body">
-      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12">
         <EditorialHero />
 
         <article className="mt-12 space-y-6 text-base leading-[1.75] sm:mt-16 sm:text-lg">

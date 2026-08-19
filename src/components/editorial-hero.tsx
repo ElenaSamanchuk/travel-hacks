@@ -17,7 +17,7 @@ export function EditorialHero() {
           Как спланировать отпуск и не разочароваться в поездке
         </p>
 
-        <h1 className="relative max-w-4xl">
+        <h1 className="relative">
           <span
             className="block font-serif text-[clamp(3rem,12vw,8rem)] leading-[0.9] tracking-tight text-foreground/30"
             aria-hidden

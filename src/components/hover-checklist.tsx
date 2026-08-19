@@ -60,7 +60,7 @@ export function HoverChecklist({
 
   return (
     <section className="my-16 sm:my-24">
-      <h2 className="max-w-2xl font-serif text-2xl leading-snug sm:text-3xl md:text-4xl">
+      <h2 className="max-w-4xl font-serif text-2xl leading-snug sm:text-3xl md:text-4xl">
         {title}
       </h2>
       <p className="mt-4 text-sm tracking-wide text-muted-foreground">
@@ -69,7 +69,7 @@ export function HoverChecklist({
 
       <div
         ref={containerRef}
-        className="relative mt-10 h-[min(72vh,640px)] w-full select-none overflow-hidden"
+        className="relative mt-10 h-[min(75vh,720px)] w-full select-none overflow-hidden"
         onMouseLeave={handleLeave}
       >
         {backgroundName && (
@@ -130,7 +130,7 @@ export function HoverChecklist({
           aria-live="polite"
         >
           {activeHack && (
-            <div className="mx-auto max-w-2xl border-t border-foreground/15 bg-[#f7f4ef]/95 px-4 py-6 backdrop-blur-sm sm:px-8 sm:py-8">
+            <div className="mx-auto max-w-3xl border-t border-foreground/15 bg-[#f7f4ef]/95 px-4 py-6 backdrop-blur-sm sm:px-8 sm:py-8">
               <div className="flex items-baseline gap-4">
                 <span className="font-serif text-5xl text-foreground/20 sm:text-6xl">
                   {String(activeIndex + 1).padStart(2, "0")}
