@@ -1,161 +1,120 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { InteractiveChecklist } from "@/components/interactive-checklist";
+import { EditorialHero } from "@/components/editorial-hero";
+import { HoverChecklist } from "@/components/hover-checklist";
+import { PullQuote } from "@/components/pull-quote";
 import {
-  categoryMeta,
-  travelHacks,
-  type HackCategory,
-} from "@/data/travel-hacks";
+  planningScatter,
+  spontaneousScatter,
+} from "@/data/checklist-layout";
+import { travelHacks } from "@/data/travel-hacks";
 
-const categories: HackCategory[] = ["planning", "spontaneous", "universal"];
+const planningHacks = travelHacks.filter((h) => h.category === "planning");
+const spontaneousHacks = travelHacks.filter((h) => h.category === "spontaneous");
 
 export function TravelHacksPage() {
-  const [activeTab, setActiveTab] = useState<HackCategory>("planning");
-
-  const hacksByCategory = useMemo(() => {
-    return categories.reduce(
-      (acc, cat) => {
-        acc[cat] = travelHacks.filter((h) => h.category === cat);
-        return acc;
-      },
-      {} as Record<HackCategory, typeof travelHacks>,
-    );
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#f7f4ef] text-foreground">
-      <header className="border-b border-border/40 bg-[#f7f4ef]/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6">
-          <div className="flex items-center gap-3">
-            <div
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground text-sm font-medium text-background"
-              aria-hidden
-            >
-              T
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                Travel Hacks
-              </p>
-              <p className="text-sm font-medium">Чеклист путешественника</p>
-            </div>
+    <div className="min-h-screen bg-[#f7f4ef] text-foreground editorial-body">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <EditorialHero />
+
+        <article className="mt-12 space-y-6 text-base leading-[1.75] sm:mt-16 sm:text-lg">
+          <p>
+            «Можно забронировать всё, кроме идеального момента», — пишет
+            Андрей Григорьев-Апполонов. С ним едва ли согласятся тысячи людей,
+            которые прямо сейчас ждут вылета в аэропорту или только планируют
+            путешествие: долгожданные каникулы просто обязаны сделать нас
+            счастливыми.
+          </p>
+          <p>
+            Как сделать, чтобы эти ожидания оправдались? Мы собрали план
+            действий на любой сценарий: планируете отпуск за полгода, собираетесь
+            спонтанно или вовсе не разделяете работу и жизнь.
+          </p>
+        </article>
+
+        <section className="mt-14 sm:mt-20">
+          <h2 className="font-serif text-2xl sm:text-3xl">В ожидании чуда</h2>
+          <div className="mt-6 space-y-6 text-base leading-[1.75] sm:text-lg">
+            <p>
+              «Я предпочитаю полностью планировать отпуск за три-четыре
+              месяца, — рассказывает Кирилл Коваленко. — Например, я собираюсь
+              в Париж в середине октября и у меня уже расписан календарь
+              посещения всех новых выставок, ужинов в ресторанах и так далее».
+            </p>
+            <p>
+              Ключевое для него — спокойствие и предвкушение. «В реальности
+              идеального шторма хочется предсказуемости, что ли». И он далеко не
+              одинок: раннее планирование даёт больше свободы, чем сложнее
+              путешествие, тем важнее заранее забронировать нужные даты.
+            </p>
           </div>
-          <p className="hidden text-xs text-muted-foreground sm:block">
-            inspired by editorial travel guides
+        </section>
+
+        <PullQuote>
+          Отпуск перестаёт быть отдыхом и становится инвестиционным проектом
+        </PullQuote>
+
+        <div className="space-y-6 text-base leading-[1.75] sm:text-lg">
+          <p>
+            У проекта есть цели, показатели эффективности и дедлайны. У паузы —
+            только одно назначение: дать психике пространство, в котором ничего
+            не требуется производить, включая впечатления и контент.
+          </p>
+          <p>
+            И чем больше времени, денег и прочих ресурсов затрачено на
+            планирование, тем выше внутренняя ставка ожиданий. Психика начинает
+            сравнивать полученное с ожидаемым — и в этом сравнении реальность
+            почти всегда проигрывает.
           </p>
         </div>
-      </header>
 
-      <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
-        <article className="space-y-10 sm:space-y-14">
-          <div className="space-y-6">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Как спланировать отпуск и не разочароваться
+        <HoverChecklist
+          hacks={planningHacks}
+          positions={planningScatter}
+          title="Чек-лист, чтобы планировать с удовольствием и реже разочаровываться"
+        />
+
+        <section className="mt-8 sm:mt-12">
+          <h2 className="font-serif text-2xl sm:text-3xl">Маршрут не построен</h2>
+          <div className="mt-6 space-y-6 text-base leading-[1.75] sm:text-lg">
+            <p>
+              Если все лайфхаки выше вами уже испробованы, но запланировать
+              идеальный отпуск всё же не получается — не планируйте. Это ещё
+              одна популярная отпускная стратегия, которая может сработать.
             </p>
-            <h1 className="max-w-3xl font-serif text-4xl leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              <span className="text-muted-foreground/70">Ненадёжные</span>
-              <span className="text-foreground">надежды</span>
-            </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              «Можно забронировать всё, кроме идеального момента». Долгожданные
-              каникулы обязаны сделать нас счастливыми — но чем больше мы
-              вкладываем в план, тем выше ставка ожиданий. Этот чеклист —
-              план действий на любой сценарий: отпуск за полгода, спонтанный
-              трип или жизнь без разделения работы и путешествий.
+            <p>
+              Спонтанные путешественники ищут в непредсказуемости ощущение
+              жизни. Ещё один плюс — отсутствие завышенных ожиданий: вы их
+              просто не успеете сформировать.
             </p>
           </div>
+        </section>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              {
-                stat: "12",
-                label: "советов для планировщиков",
-                accent: "bg-[#e8e2d8]",
-              },
-              {
-                stat: "6",
-                label: "правил для спонтанных поездок",
-                accent: "bg-[#dfe8e4]",
-              },
-              {
-                stat: "6",
-                label: "универсальных лайфхаков",
-                accent: "bg-[#e8dfe8]",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className={`rounded-2xl p-5 ${item.accent}`}
-              >
-                <p className="font-serif text-4xl">{item.stat}</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {item.label}
-                </p>
-              </div>
-            ))}
-          </div>
+        <PullQuote mark="!">
+          если вам удалось провернуть одну идеальную спонтанную поездку, не факт
+          что подобный успех повторится
+        </PullQuote>
 
-          <blockquote
-            className="rounded-2xl border border-border/50 bg-card/60 p-6 sm:p-8"
-          >
-            <p className="font-serif text-xl leading-relaxed sm:text-2xl">
-              Отпуск перестаёт быть отдыхом и становится инвестиционным
-              проектом, который обязан принести дивиденды.
-            </p>
-            <footer className="mt-4 text-sm text-muted-foreground">
-              — и тогда реальность почти всегда проигрывает в сравнении с
-              ожиданиями
-            </footer>
-          </blockquote>
-
-          <Tabs
-            value={activeTab}
-            onValueChange={(v) => setActiveTab(v as HackCategory)}
-            className="space-y-8"
-          >
-            <TabsList className="h-auto flex-wrap gap-1 bg-transparent p-0">
-              {categories.map((cat) => (
-                <TabsTrigger
-                  key={cat}
-                  value={cat}
-                  className="rounded-full border border-transparent px-5 py-2.5 data-[state=active]:border-border data-[state=active]:bg-card data-[state=active]:shadow-sm"
-                >
-                  {categoryMeta[cat].label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {categories.map((cat) => (
-              <TabsContent key={cat} value={cat} className="mt-0">
-                <InteractiveChecklist
-                  hacks={hacksByCategory[cat]}
-                  category={cat}
-                />
-              </TabsContent>
-            ))}
-          </Tabs>
-
-          <section className="rounded-2xl border border-dashed border-border/70 bg-card/40 p-6 sm:p-8">
-            <h2 className="font-serif text-2xl sm:text-3xl">
-              Маршрут не построен?
-            </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Если все лайфхаки испробованы, но идеальный отпуск всё равно не
-              случается — не планируйте. Спонтанность тоже стратегия. Главное —
-              знать, где поспать, и оставить место для сюрпризов.
-            </p>
-          </section>
-        </article>
-      </main>
-
-      <footer className="border-t border-border/40 py-8">
-        <div className="mx-auto max-w-5xl px-4 text-center text-xs text-muted-foreground sm:px-6">
-          Чеклист для путешественников · Соберите свой набор правил перед
-          следующей поездкой
+        <div className="space-y-6 text-base leading-[1.75] sm:text-lg">
+          <p>
+            Отсюда вытекает первый совет для начинающих авантюристов:
+            запланируйте хотя бы что-то. Можно определиться с целью путешествия,
+            наметить несколько мест или просто забронировать первый отель.
+          </p>
         </div>
-      </footer>
+
+        <HoverChecklist
+          hacks={spontaneousHacks}
+          positions={spontaneousScatter}
+          title="Правила для классных спонтанных путешествий"
+          hint="Наведите на цифру — или нажмите на мобильном"
+        />
+
+        <footer className="mt-20 border-t border-foreground/10 py-10 text-center text-xs tracking-wide text-muted-foreground">
+          Чеклист путешественника · соберите свой набор правил перед поездкой
+        </footer>
+      </div>
     </div>
   );
 }
