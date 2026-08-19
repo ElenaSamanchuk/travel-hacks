@@ -73,6 +73,8 @@ export function TravelHacksPage() {
           hacks={planningHacks}
           positions={planningScatter}
           title="Чек-лист, чтобы планировать с удовольствием и реже разочаровываться"
+          backgroundImage="/images/planning-scatter.png"
+          backgroundAlt="Иллюстрация: планирование отпуска"
         />
 
         <section className="mt-8 sm:mt-12">
@@ -109,6 +111,8 @@ export function TravelHacksPage() {
           positions={spontaneousScatter}
           title="Правила для классных спонтанных путешествий"
           hint="Наведите на цифру — или нажмите на мобильном"
+          backgroundImage="/images/spontaneous-scatter.png"
+          backgroundAlt="Иллюстрация: спонтанное путешествие"
         />
 
         <footer className="mt-20 border-t border-foreground/10 py-10 text-center text-xs tracking-wide text-muted-foreground">

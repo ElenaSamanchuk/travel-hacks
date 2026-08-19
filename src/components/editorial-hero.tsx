@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function EditorialHero() {
   return (
     <header className="relative pt-8 sm:pt-16">
@@ -32,6 +34,17 @@ export function EditorialHero() {
         <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
           иллюстрации: ваша поездка
         </p>
+
+        <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden sm:mt-10">
+          <Image
+            src="/images/hero-collage.png"
+            alt="Коллаж иллюстраций: аэропорт, карта, планирование поездки"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+          />
+        </div>
       </div>
     </header>
   );
