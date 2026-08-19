@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { withBasePath } from "@/lib/base-path";
+import { EditorialImage } from "@/components/editorial-image";
 
 export function EditorialHero() {
   return (
@@ -37,12 +36,9 @@ export function EditorialHero() {
         </p>
 
         <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden sm:mt-10">
-          <Image
-            src={withBasePath("/images/hero-collage.png")}
+          <EditorialImage
+            name="hero-collage"
             alt="Коллаж иллюстраций: аэропорт, карта, планирование поездки"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 768px"
             priority
           />
         </div>

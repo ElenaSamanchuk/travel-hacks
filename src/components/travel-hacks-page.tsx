@@ -8,7 +8,6 @@ import {
   spontaneousScatter,
 } from "@/data/checklist-layout";
 import { travelHacks } from "@/data/travel-hacks";
-import { withBasePath } from "@/lib/base-path";
 
 const planningHacks = travelHacks.filter((h) => h.category === "planning");
 const spontaneousHacks = travelHacks.filter((h) => h.category === "spontaneous");
@@ -74,7 +73,7 @@ export function TravelHacksPage() {
           hacks={planningHacks}
           positions={planningScatter}
           title="Чек-лист, чтобы планировать с удовольствием и реже разочаровываться"
-          backgroundImage={withBasePath("/images/planning-scatter.png")}
+          backgroundName="planning-scatter"
           backgroundAlt="Иллюстрация: планирование отпуска"
         />
 
@@ -112,7 +111,7 @@ export function TravelHacksPage() {
           positions={spontaneousScatter}
           title="Правила для классных спонтанных путешествий"
           hint="Наведите на цифру — или нажмите на мобильном"
-          backgroundImage={withBasePath("/images/spontaneous-scatter.png")}
+          backgroundName="spontaneous-scatter"
           backgroundAlt="Иллюстрация: спонтанное путешествие"
         />
 

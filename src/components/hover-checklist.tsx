@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { EditorialImage } from "@/components/editorial-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { TravelHack } from "@/data/travel-hacks";
 import {
@@ -13,7 +13,7 @@ type HoverChecklistProps = {
   positions: ScatterPosition[];
   title: string;
   hint?: string;
-  backgroundImage?: string;
+  backgroundName?: string;
   backgroundAlt?: string;
 };
 
@@ -22,7 +22,7 @@ export function HoverChecklist({
   positions,
   title,
   hint = "Наведите на цифру, чтобы прочитать пункт",
-  backgroundImage,
+  backgroundName,
   backgroundAlt = "",
 }: HoverChecklistProps) {
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -72,14 +72,12 @@ export function HoverChecklist({
         className="relative mt-10 h-[min(72vh,640px)] w-full select-none overflow-hidden"
         onMouseLeave={handleLeave}
       >
-        {backgroundImage && (
+        {backgroundName && (
           <div className="pointer-events-none absolute inset-0">
-            <Image
-              src={backgroundImage}
+            <EditorialImage
+              name={backgroundName}
               alt={backgroundAlt}
-              fill
-              className="object-cover object-center opacity-40 mix-blend-multiply"
-              sizes="(max-width: 768px) 100vw, 768px"
+              className="opacity-40 mix-blend-multiply"
             />
             <div className="absolute inset-0 bg-[#f7f4ef]/35" />
           </div>
