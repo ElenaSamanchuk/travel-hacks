@@ -1,15 +1,33 @@
-# Travel Hacks — чеклист путешественника
+# Travel Hacks — чеклист путешественников
 
-Интерактивная редакционная страница в стиле travel-гайдов: лайфхаки и чеклист для планирования отпуска без разочарований.
+Интерактивная редакционная страница: лайфхаки и чеклист для планирования отпуска.
 
-**Live:** https://elenasamanchuk.github.io/travel-hacks/
+## Cursor Projects
 
-## Возможности
+Проект настроен как Cloud Agent environment (`.cursor/environment.json`):
 
-- Гигантский редакционный заголовок «Ненадёжные надежды»
-- Лонгрид с pull-quotes и секциями
-- Интерактивные рассыпанные цифры — наведите, чтобы прочитать совет
-- Два чеклиста: планирование и спонтанные поездки
+- `install`: `npm ci`
+- dev-сервер на порту **3456**
+
+### Открыть в Projects
+
+1. Cursor → **Projects** (или Cloud Agents)
+2. **New Agent** → выберите репозиторий:
+   - GitHub: `elenasamanchuk/travel-hacks` (после пуша)
+   - или текущий Origin: `tmp-be5c667e3f96a798`
+3. Агент поднимет dev-сервер автоматически
+
+### GitHub Pages (опционально)
+
+После пуша в `main` на GitHub деплой идёт через Actions.
+
+**Live URL:** https://elenasamanchuk.github.io/travel-hacks/
+
+Локально с basePath для Pages:
+
+```bash
+GITHUB_PAGES=true npm run build
+```
 
 ## Локальный запуск
 
@@ -18,20 +36,15 @@ npm install
 npm run dev -- -p 3456
 ```
 
-Откройте http://localhost:3456
+http://localhost:3456
 
-## Деплой на GitHub Pages
-
-Сайт деплоится автоматически через GitHub Actions при пуше в `main`.
-
-В настройках репозитория: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-Для локальной проверки production-сборки с basePath:
+## Деплой на GitHub
 
 ```bash
-GITHUB_PAGES=true npm run build
-npx serve out
+./scripts/github-device-deploy.sh
 ```
+
+Откройте https://github.com/login/device и введите код из вывода скрипта.
 
 ## Стек
 

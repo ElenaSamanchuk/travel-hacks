@@ -1,0 +1,17 @@
+{
+  "name": "Travel Hacks",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev -- -p 3456",
+      "description": "Next.js dev server for travel hacks checklist"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 3456
+    }
+  ]
+}
